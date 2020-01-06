@@ -1,0 +1,33 @@
+:host(app-notes-form) {
+  min-width: 320px;
+  width: 320px;
+  padding: 20px;
+  margin-right: 20px;
+  border-radius: 4px;
+  border: 1px solid #e5e5e5;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+
+   > * {
+    width: 100%;
+  }
+}
+
+.form-radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-radio-button {
+  margin: 5px;
+}
+
+.form-field {
+  width: 100%;
+}
