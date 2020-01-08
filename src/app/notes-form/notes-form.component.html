@@ -1,20 +1,20 @@
-<form [ngClass]="'form'">
+<form [ngClass]="'form'" [formGroup]="form" (ngSubmit)="submit()">
   <div>
     <mat-form-field appearance="outline" [ngClass]="'form-field'">
-      <textarea matInput placeholder="Введите описание товара"></textarea>
+      <textarea matInput placeholder="Введите описание товара" formControlName="description"></textarea>
     </mat-form-field>
     <mat-form-field appearance="outline" [ngClass]="'form-field'">
-      <input matInput placeholder="Введите цену">
+      <input matInput placeholder="Введите цену" formControlName="price">
     </mat-form-field>
     <mat-form-field>
-      <input matInput [matDatepicker]="picker1" placeholder="Angular forms" [formControl]="date">
+      <input matInput [matDatepicker]="picker1" placeholder="Angular forms" formControlName="date">
       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
-    <mat-radio-group [ngClass]="'form-radio-group'" aria-label="Select an option">
-      <mat-radio-button value="1" [ngClass]="'form-radio-button'">Куплено</mat-radio-button>
-      <mat-radio-button value="2" [ngClass]="'form-radio-button'">Нужно купить</mat-radio-button>
+    <mat-radio-group formControlName="isNeedByu" [ngClass]="'form-radio-group'" aria-label="Select an option">
+      <mat-radio-button value="0"  [ngClass]="'form-radio-button'" >Куплено</mat-radio-button>
+      <mat-radio-button value="1"  [ngClass]="'form-radio-button'" >Нужно купить</mat-radio-button>
     </mat-radio-group>
   </div>
-  <button mat-stroked-button color="primary">Primary</button>
+  <button mat-stroked-button color="primary" type="submit" [disabled]="form.invalid">Primary</button>
 </form>

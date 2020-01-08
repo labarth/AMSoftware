@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { v4 } from 'uuid';
+import { HttpClient } from '@angular/common/http';
 
 interface INote {
   id: string;
@@ -53,34 +54,36 @@ const Notes: Array<INote> = [
   },
 ];
 
-const getTotal = (notes: Array<INote>, isNeedToBuy: boolean = false) => notes.reduce((acc, note) => {
-  if (isNeedToBuy) {
-    if (note.isNeedBuy) {
-      acc += note.price;
-    }
-  } else {
-    if (!note.isNeedBuy) {
-      acc += note.price;
-    }
-  }
-
-  return acc;
-}, 0);
-
 @Injectable({
   providedIn: 'root'
 })
 export class NotesService {
   notes = Notes;
-  constructor() { }
 
+  constructor(private http: HttpClient) {}
+
+  getTotal(isNeedToBuy: boolean = false) {
+    return this.notes.reduce((acc, note) => {
+      if (isNeedToBuy) {
+        if (note.isNeedBuy) {
+          acc += note.price;
+        }
+      } else {
+        if (!note.isNeedBuy) {
+          acc += note.price;
+        }
+      }
+
+      return acc;
+    }, 0);
+  }
 
   getNeedToBuyTotal() {
-    return getTotal(this.notes, true);
+    return this.getTotal(true);
   }
 
   getBoughtTotal() {
-    return getTotal(this.notes, false);
+    return this.getTotal(false);
   }
 
   addNote(note: INote) {
