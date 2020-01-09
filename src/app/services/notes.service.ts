@@ -78,6 +78,10 @@ export class NotesService {
     }, 0);
   }
 
+  getNotes() {
+    return this.http.get('https://am-soft.herokuapp.com/notes');
+  }
+
   getNeedToBuyTotal() {
     return this.getTotal(true);
   }

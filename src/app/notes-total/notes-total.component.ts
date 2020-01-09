@@ -9,6 +9,7 @@ import {NotesService} from '../services/notes.service';
 export class NotesTotalComponent implements OnInit, DoCheck {
   needByuTotal: number;
   boughtTotal: number;
+  notes: any;
   constructor(public notesService: NotesService) { }
 
   ngOnInit(): void {
@@ -17,6 +18,13 @@ export class NotesTotalComponent implements OnInit, DoCheck {
 
   ngDoCheck(): void {
     this.getTotals();
+  }
+
+  getNotes() {
+    this.notesService.getNotes().subscribe((notes) => {
+      this.notes = notes;
+      console.log(notes, '@@@@@@@@@@@@@@@@@@@@');
+    });
   }
 
   getTotals() {
