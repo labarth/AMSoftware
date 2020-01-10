@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "https://am-soft.herokuapp.com/",
+    "secure": false
+  }
+}

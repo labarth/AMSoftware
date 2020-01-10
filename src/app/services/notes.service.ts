@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { v4 } from 'uuid';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 interface INote {
   id: string;
@@ -80,14 +80,7 @@ export class NotesService {
   }
 
   getNotes() {
-    let headers = new HttpHeaders();
-    headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    headers.append('Access-Control-Allow-Methods', 'GET');
-    headers.append('Access-Control-Allow-Origin', '*');
-
-    console.log(headers, '@@@@@@@@@@');
-
-    return this.http.get('https://am-soft.herokuapp.com/api/notes', { headers });
+    return this.http.get('https://am-soft.herokuapp.com/api/notes');
   }
 
   getNeedToBuyTotal() {
