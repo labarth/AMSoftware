@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { v4 } from 'uuid';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 interface INote {
   id: string;
@@ -60,7 +60,8 @@ const Notes: Array<INote> = [
 export class NotesService {
   notes = Notes;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getTotal(isNeedToBuy: boolean = false) {
     return this.notes.reduce((acc, note) => {
@@ -79,7 +80,14 @@ export class NotesService {
   }
 
   getNotes() {
-    return this.http.get('https://am-soft.herokuapp.com/notes');
+    let headers = new HttpHeaders();
+    headers.append('Access-Control-Allow-Headers', 'Content-Type');
+    headers.append('Access-Control-Allow-Methods', 'GET');
+    headers.append('Access-Control-Allow-Origin', '*');
+
+    console.log(headers, '@@@@@@@@@@');
+
+    return this.http.get('https://am-soft.herokuapp.com/api/notes', { headers });
   }
 
   getNeedToBuyTotal() {
