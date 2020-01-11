@@ -1,5 +1,5 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import {NotesService} from '../services/notes.service';
+import { NotesService } from '../services/notes.service';
 
 @Component({
   selector: 'app-notes-total',
@@ -18,13 +18,6 @@ export class NotesTotalComponent implements OnInit, DoCheck {
 
   ngDoCheck(): void {
     this.getTotals();
-  }
-
-  getNotes() {
-    this.notesService.getNotes().subscribe((notes) => {
-      this.notes = notes;
-      console.log(notes, '@@@@@@@@@@@@@@@@@@@@');
-    });
   }
 
   getTotals() {

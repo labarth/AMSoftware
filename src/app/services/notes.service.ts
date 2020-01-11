@@ -54,13 +54,16 @@ const Notes: Array<INote> = [
   },
 ];
 
+console.log(JSON.stringify(Notes));
+
 @Injectable({
   providedIn: 'root'
 })
 export class NotesService {
-  notes = Notes;
+  notes: Array<INote>;
 
   constructor(private http: HttpClient) {
+    this.notes = [];
   }
 
   getTotal(isNeedToBuy: boolean = false) {
@@ -80,7 +83,9 @@ export class NotesService {
   }
 
   getNotes() {
-    return this.http.get('https://am-soft.herokuapp.com/api/notes');
+    this.http.get('http://localhost:8080/api/notes').subscribe((notes: Array<INote>) => {
+      this.notes = notes;
+    });
   }
 
   getNeedToBuyTotal() {
