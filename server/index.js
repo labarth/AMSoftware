@@ -31,7 +31,8 @@ app.get(`${API_KEY}/notes`, function (req, res) {
 
 app.patch(`${API_KEY}/notes`, function (req, res) {
   const note = req.body;
-  const newNotes = notes.push(note);
+  notes.push(note);
+  console.log(notes, '@@@@@@@@@@@@@');
   updateDataBaseNotes(notes);
   res.sendStatus(200);
 });
@@ -43,12 +44,6 @@ app.delete(`${API_KEY}/notes`, (req, res) => {
   updateDataBaseNotes(notes);
   res.sendStatus(200);
 });
-
-class Api {
-  constructor() {}
-
-
-}
 
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
