@@ -59,6 +59,6 @@ export class NotesService {
 
   deleteNote(id: string) {
     this.notes = this.notes.filter((note) => note.id !== id);
-    this.http.delete(`https://am-soft.herokuapp.com/api/notes/`, { responseType: 'text', params: { id }}).subscribe();
+    this.http.delete(`https://am-soft.herokuapp.com/api/notes`, { responseType: 'text', params: { id }}).subscribe();
   }
 }

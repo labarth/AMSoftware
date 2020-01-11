@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "server": "nodemon server/index.js",
+    "server:deploy": "node server/index.js",
     "start": "ng serve --configuration hmr --proxy-config proxy.config.json",
     "build": "ng build",
     "test": "ng test",
