@@ -1,9 +1,14 @@
-<mat-list>
+<mat-list *ngIf="notes.length !== 0 else emptyList">
   <mat-list-item *ngFor="let note of notes; let idx = index">
     <p mat-line>{{note.description}}</p>
     <p mat-line>{{note.price}}</p>
     <p mat-line>{{note.date | date:'dd.MM.yy' }}</p>
     <p mat-line>{{note.isNeedBuy ? 'Нужно купить': 'Куплено'}}</p>
+    <div (click)="deleteNote(note.id)">🗑</div>
     <mat-divider *ngIf="idx !== notes.length - 1"></mat-divider>
   </mat-list-item>
 </mat-list>
+<ng-template  #emptyList>
+  <div>Empty list</div>
+</ng-template>
+

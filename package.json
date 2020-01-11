@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "server": "node server/index.js",
+    "server": "nodemon server/index.js",
     "start": "ng serve --configuration hmr --proxy-config proxy.config.json",
     "build": "ng build",
     "test": "ng test",
@@ -47,6 +47,7 @@
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "nodemon": "^2.0.2",
     "protractor": "~5.4.2",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",

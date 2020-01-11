@@ -13,16 +13,15 @@ export class NotesListComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
-    this.getNotes();
-    this.notes = this.notesService.notes;
-  }
-
-  getNotes() {
     this.notesService.getNotes();
+    this.notes = this.notesService.notes;
   }
 
   ngDoCheck(): void {
     this.notes = this.notesService.notes;
   }
 
+  deleteNote(id) {
+    this.notesService.deleteNote(id);
+  }
 }

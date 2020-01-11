@@ -9,52 +9,7 @@ interface INote {
   price: number;
   isNeedBuy: boolean;
 }
-const Notes: Array<INote> = [
-  {
-    id: v4(),
-    date: new Date(),
-    description: 'Холодильник',
-    price: 1250,
-    isNeedBuy: false,
-  },
-  {
-    id: v4(),
-    date: new Date(),
-    description: 'Стиральная машина',
-    price: 1300,
-    isNeedBuy: false,
-  },
-  {
-    id: v4(),
-    date: new Date(),
-    description: 'Плита кухонна',
-    price: 770,
-    isNeedBuy: false,
-  },
-  {
-    id: v4(),
-    date: new Date(),
-    description: 'Духовой шкаф',
-    price: 770,
-    isNeedBuy: false,
-  },
-  {
-    id: v4(),
-    date: new Date(),
-    description: 'Микроволновка',
-    price: 720,
-    isNeedBuy: false,
-  },
-  {
-    id: v4(),
-    date: new Date(),
-    description: 'Двери и плинтуса',
-    price: 1800,
-    isNeedBuy: true,
-  },
-];
 
-console.log(JSON.stringify(Notes));
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +23,7 @@ export class NotesService {
 
   getTotal(isNeedToBuy: boolean = false) {
     return this.notes.reduce((acc, note) => {
+
       if (isNeedToBuy) {
         if (note.isNeedBuy) {
           acc += note.price;
@@ -98,9 +54,11 @@ export class NotesService {
 
   addNote(note: INote) {
     this.notes.push(note);
+    this.http.patch('http://localhost:8080/api/notes', note, {  responseType: 'text' }).subscribe();
   }
 
   deleteNote(id: string) {
     this.notes = this.notes.filter((note) => note.id !== id);
+    this.http.delete(`http://localhost:8080/api/notes/`, { responseType: 'text', params: { id }}).subscribe();
   }
 }
