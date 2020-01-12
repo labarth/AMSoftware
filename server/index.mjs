@@ -7,6 +7,8 @@ import api from './api.mjs';
 
 
 const app = express();
+
+console.log(process.env.MONGODB_URI, '@@@@@@@@@@@@@');
 const dbUrl =  process.env.MONGODB_URI ? process.env.MONGODB_URI : 'mongodb://localhost:27017/my_database';
 
 mongoose.connect(dbUrl, { useNewUrlParser: true }, (error) => {
