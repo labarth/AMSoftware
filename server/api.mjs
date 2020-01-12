@@ -22,7 +22,7 @@ router.get('/', function(req,res) {
   res.sendFile(path.join(__dirname,'/dist/AMSoftware/index.html'));
 });
 
-router.get(`${API_KEY}db`, function (req, res) {
+router.get(API_KEY, function (req, res) {
   Notes.find((err, notes) => {
     res.send(notes);
   });
