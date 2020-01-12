@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { v4 } from 'uuid';
 import { HttpClient } from '@angular/common/http';
 
 interface INote {
+  _id?: string;
   id: string;
   date: Date;
   description: string;
@@ -40,6 +40,7 @@ export class NotesService {
 
   getNotes() {
     this.http.get('https://am-soft.herokuapp.com/api/notes').subscribe((notes: Array<INote>) => {
+      console.log(notes, '@@@@@@@@@@@');
       this.notes = notes;
     });
   }
@@ -58,7 +59,7 @@ export class NotesService {
   }
 
   deleteNote(id: string) {
-    this.notes = this.notes.filter((note) => note.id !== id);
+    this.notes = this.notes.filter((note) => note._id !== id);
     this.http.delete(`https://am-soft.herokuapp.com/api/notes/`, { responseType: 'text', params: { id }}).subscribe();
   }
 }

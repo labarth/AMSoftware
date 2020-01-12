@@ -4,7 +4,7 @@
     <p mat-line>{{note.price}}</p>
     <p mat-line>{{note.date | date:'dd.MM.yy' }}</p>
     <p mat-line>{{note.isNeedBuy ? 'Нужно купить': 'Куплено'}}</p>
-    <div (click)="deleteNote(note.id)">🗑</div>
+    <div (click)="deleteNote(note._id)">🗑</div>
     <mat-divider *ngIf="idx !== notes.length - 1"></mat-divider>
   </mat-list-item>
 </mat-list>
