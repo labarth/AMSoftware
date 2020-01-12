@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import process from 'process';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import api from './api.js';
+import api from './api.mjs';
 
 
 const app = express();

@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-import { notesData, updateDataBaseNotes } from './utils.js';
+import { notesData, updateDataBaseNotes } from './utils.mjs';
 
 const router = express.Router();
 const API_KEY = '/notes';
