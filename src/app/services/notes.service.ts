@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 interface INote {
   _id?: string;
   id: string;
-  date: Date;
+  date: number;
   description: string;
   price: number;
   isNeedBuy: boolean;
@@ -39,8 +39,7 @@ export class NotesService {
   }
 
   getNotes() {
-    this.http.get('https://am-soft.herokuapp.com/api/notes').subscribe((notes: Array<INote>) => {
-      console.log(notes, '@@@@@@@@@@@');
+    this.http.get('http://localhost:8080/api/notes').subscribe((notes: Array<INote>) => {
       this.notes = notes;
     });
   }
@@ -55,11 +54,11 @@ export class NotesService {
 
   addNote(note: INote) {
     this.notes.push(note);
-    this.http.patch('https://am-soft.herokuapp.com/api/notes', note, {  responseType: 'text' }).subscribe();
+    this.http.patch('http://localhost:8080/api/notes', note, {  responseType: 'text' }).subscribe();
   }
 
   deleteNote(id: string) {
     this.notes = this.notes.filter((note) => note._id !== id);
-    this.http.delete(`https://am-soft.herokuapp.com/api/notes/`, { responseType: 'text', params: { id }}).subscribe();
+    this.http.delete(`http://localhost:8080/api/notes/`, { responseType: 'text', params: { id }}).subscribe();
   }
 }

@@ -9,8 +9,8 @@ const notesSchema = new mongoose.Schema({
   id: String,
   date: Number,
   price: Number,
-  isNeedByu: Boolean,
   description: String,
+  isNeedByu: Boolean,
 });
 
 const Notes = mongoose.model('notes', notesSchema);
@@ -26,7 +26,7 @@ router.get(API_KEY, function (req, res) {
 });
 
 router.patch(API_KEY, function (req, res) {
-  const note = new Notes({...JSON.stringify(req.body)});
+  const note = new Notes(req.body);
 
   note.save((err) => {
     if (err) throw err;
@@ -36,7 +36,7 @@ router.patch(API_KEY, function (req, res) {
 });
 
 router.delete(API_KEY, (req, res) => {
-  Notes.remove({ _id: req.body.id }, (err) => {
+  Notes.deleteOne({ _id: req.query.id }, (err, arg) => {
     if (err) throw err;
     res.sendStatus(200);
   });

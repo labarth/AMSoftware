@@ -32,7 +32,7 @@ export class NotesFormComponent implements OnInit {
 
     this.notesService.addNote({
       id: v4(),
-      date,
+      date: new Date(date).getTime(),
       price: parseFloat(price),
       description,
       isNeedBuy: Boolean(Number(isNeedByu)),
