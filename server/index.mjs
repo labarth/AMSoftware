@@ -16,22 +16,10 @@ mongoose.connect(dbUrl, { useNewUrlParser: true }, (error) => {
   console.log('successfully connection');
 });
 
-const notesSchema = new mongoose.Schema({
-  id: String,
-  date: Number,
-  price: Number,
-  isNeedByu: Boolean,
-  description: String,
-});
-
-const Notes = mongoose.model('notes', notesSchema);
-
 
 
 app.get('/api/notesdb', function(req,res) {
-  Notes.find((err, notes) => {
-    res.send(notes);
-  });
+
 });
 
 app

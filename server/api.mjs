@@ -1,9 +1,20 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import path from 'path';
 import { notesData, updateDataBaseNotes } from './utils.mjs';
 
 const router = express.Router();
 const API_KEY = '/notes';
+
+const notesSchema = new mongoose.Schema({
+  id: String,
+  date: Number,
+  price: Number,
+  isNeedByu: Boolean,
+  description: String,
+});
+
+const Notes = mongoose.model('notes', notesSchema);
 
 let notes = JSON.parse(notesData);
 
@@ -11,8 +22,10 @@ router.get('/', function(req,res) {
   res.sendFile(path.join(__dirname,'/dist/AMSoftware/index.html'));
 });
 
-router.get(API_KEY, function (req, res) {
-  res.send(JSON.stringify(notes));
+router.get(`${API_KEY}db`, function (req, res) {
+  Notes.find((err, notes) => {
+    res.send(notes);
+  });
 });
 
 router.patch(API_KEY, function (req, res) {
