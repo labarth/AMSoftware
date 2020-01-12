@@ -7,7 +7,7 @@ import api from './api.mjs';
 
 
 const app = express();
-const dbUrl =  process.env.MONGODB_URI ? `${process.env.MONGODB_URI}/heroku_zk9xt1nk` : 'mongodb://localhost:27017/my_database';
+const dbUrl =  process.env.MONGODB_URI ? process.env.MONGODB_URI : 'mongodb://localhost:27017/my_database';
 
 mongoose.connect(dbUrl, { useNewUrlParser: true }, (error) => {
    if (error) throw error;
