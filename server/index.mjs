@@ -7,8 +7,8 @@ import api from './api.mjs';
 
 
 const app = express();
-
-console.log(process.env.MONGODB_URI, '@@@@@@@@@@@@@');
+//mongodb://heroku_zk9xt1nk:o5qfgpq3j2kan1pjgbh2geenrk@ds361968.mlab.com:61968/heroku_zk9xt1nk
+//mongodb://localhost:27017/my_database
 const dbUrl =  process.env.MONGODB_URI ? process.env.MONGODB_URI : 'mongodb://localhost:27017/my_database';
 
 mongoose.connect(dbUrl, { useNewUrlParser: true }, (error) => {
@@ -26,9 +26,11 @@ const notesSchema = new mongoose.Schema({
 
 const Notes = mongoose.model('notes', notesSchema);
 
-Notes.find((err, zalupa) => {
-  app.get('/zalupa/konya', function(req,res) {
-    res.send(zalupa);
+
+
+app.get('/api/notesdb', function(req,res) {
+  Notes.find((err, notes) => {
+    res.send(notes);
   });
 });
 
