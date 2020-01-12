@@ -1,12 +1,18 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import api from './api.js';
 
+
 const app = express();
+const dbUrl =  `${process.env.MONGODB_URI}/heroku_zk9xt1nk` || 'mongodb://localhost:27017/usersdb';
+mongoose.connect(dbUrl, { useNewUrlParser: true }, (error) => {
+   if (error) throw error;
 
+  console.log('successfully connection');
+});
 
-// Serve only the static files form the dist directory
 app
   .use(cors())
   .use(bodyParser.json())
@@ -14,6 +20,4 @@ app
   .use('/api', api);
 
 
-
-// Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
