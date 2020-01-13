@@ -16,12 +16,6 @@ mongoose.connect(dbUrl, { useNewUrlParser: true }, (error) => {
   console.log('successfully connection');
 });
 
-
-
-app.get('/api/notesdb', function(req,res) {
-
-});
-
 app
   .use(cors())
   .use(bodyParser.json())
