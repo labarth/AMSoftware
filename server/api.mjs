@@ -10,7 +10,7 @@ const notesSchema = new mongoose.Schema({
   date: Number,
   price: Number,
   description: String,
-  isNeedByu: Boolean,
+  isNeedBuy: Boolean,
 });
 
 const Notes = mongoose.model('notes', notesSchema);

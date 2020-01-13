@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 
 interface INote {
   _id?: string;
-  id: string;
   date: number;
   description: string;
   price: number;
