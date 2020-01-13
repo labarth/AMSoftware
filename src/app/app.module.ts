@@ -20,13 +20,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotesFormComponent,
     NotesListComponent,
-    NotesTotalComponent
+    NotesTotalComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
