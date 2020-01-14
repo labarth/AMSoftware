@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from '../services/validation.service';
 
-const val = (a, b) => () => a === b;
-
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -25,7 +23,7 @@ export class AuthComponent implements OnInit {
           Validators.required,
           Validators.minLength(8),
         ]),
-    }, ValidationService.match);
+    }, ValidationService.match('password', 'confirmPassword'));
   }
 
   submit() {

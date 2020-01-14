@@ -8,11 +8,13 @@ export class ValidationService {
 
   constructor() { }
 
-  static match(control: AbstractControl ) {
-    if (control.get('password').value !== control.get('confirmPassword').value) {
-      control.get('confirmPassword').setErrors({ invalidMatch: true });
-    }
+  static match(controlName: string, matchControlName: string) {
+    return (control: AbstractControl) => {
+      if (control.get(controlName).value !== control.get(matchControlName).value) {
+        control.get('confirmPassword').setErrors({ invalidMatch: true });
+      }
 
-    return null;
+      return null;
+    };
   }
 }
