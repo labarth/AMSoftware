@@ -1,10 +1,8 @@
 <div [ngClass]="'app'">
-  <div [ngClass]="'app-container'">
-    <div [ngClass]="'app-content-container'">
-      <app-notes-form></app-notes-form>
-      <app-notes-list></app-notes-list>
-    </div>
-    <app-notes-total></app-notes-total>
-    <app-auth></app-auth>
-  </div>
+  <nav>
+    <a routerLink="/login">login</a>
+    &nbsp;
+    <a routerLink="">notes</a>
+  </nav>
+  <router-outlet></router-outlet>
 </div>

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
 import {
   MatButtonModule,
   MatDatepickerModule,
@@ -26,7 +25,6 @@ import {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserModule,
   ],
   exports: [
     MatButtonModule,
@@ -40,7 +38,6 @@ import {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserModule,
   ],
 })
 export class SharedModule {}
