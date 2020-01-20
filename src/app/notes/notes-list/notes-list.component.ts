@@ -1,6 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NotesService } from '../services/notes.service';
+import { NotesService } from '../../services/notes.service';
 
 @Component({
   selector: 'app-notes-list',
