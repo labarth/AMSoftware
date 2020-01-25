@@ -9,7 +9,7 @@ const app = express();
 
 app
   .use(cors())
-  .use(bodyParser.json())
+  .use(bodyParser.urlencoded({ extended: true }))
   .use(express.static('./dist/AMSoftware'))
   .use('/api', api);
 

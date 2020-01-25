@@ -27,6 +27,7 @@ export class AuthComponent implements OnInit {
   }
 
   submit() {
-
+    console.log(this.form);
+    this.form.reset();
   }
 }
