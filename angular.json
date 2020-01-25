@@ -80,7 +80,8 @@
           "configurations": {
             "hmr": {
               "hmr": true,
-              "browserTarget": "AMSoftware:build:hmr"
+              "browserTarget": "AMSoftware:build:hmr",
+              "hmrWarning": false
             },
             "production": {
               "browserTarget": "AMSoftware:build:production"
