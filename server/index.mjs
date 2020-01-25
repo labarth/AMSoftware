@@ -4,8 +4,10 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import cors from 'cors';
 import './connect.mjs';
-import api from './api.mjs';
+import notesApi from './api/notes.mjs';
+import usersApi from './api/users.mjs';
 
+const API_KEY = '/api';
 const app = express();
 
 app
@@ -13,7 +15,8 @@ app
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
   .use(express.static('./dist/AMSoftware'))
-  .use('/api', api);
+  .use(API_KEY, notesApi)
+  .use(API_KEY, usersApi);
 
 app.get('/*' , (req, res) => {
   res.sendFile(path.join(path.resolve(), 'dist/AMSoftware/index.html'));

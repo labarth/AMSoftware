@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { API_URL } from 'src/app/constants';
 
 interface INote {
   _id?: string;
@@ -38,7 +39,7 @@ export class NotesService {
   }
 
   getNotes() {
-    this.http.get('https://am-soft.herokuapp.com/api/notes').subscribe((notes: Array<INote>) => {
+    this.http.get(`${API_URL}/notes`).subscribe((notes: Array<INote>) => {
       this.notes = notes;
     });
   }
@@ -53,11 +54,11 @@ export class NotesService {
 
   addNote(note: INote) {
     this.notes.push(note);
-    this.http.patch('https://am-soft.herokuapp.com/api/notes', note, {  responseType: 'text' }).subscribe();
+    this.http.patch(`${API_URL}/notes`, note, {  responseType: 'text' }).subscribe();
   }
 
   deleteNote(id: string) {
     this.notes = this.notes.filter((note) => note._id !== id);
-    this.http.delete(`https://am-soft.herokuapp.com/api/notes/`, { responseType: 'text', params: { id }}).subscribe();
+    this.http.delete(`${API_URL}/notes`, { responseType: 'text', params: { id }}).subscribe();
   }
 }

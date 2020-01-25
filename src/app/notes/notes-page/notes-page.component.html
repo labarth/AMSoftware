@@ -1,5 +1,10 @@
 <div [ngClass]="'app-container'">
   <div [ngClass]="'app-content-container'">
+    <nav>
+      <a routerLink="/login">login</a>
+      &nbsp;
+      <a routerLink="">notes</a>
+    </nav>
     <app-notes-form></app-notes-form>
     <app-notes-list></app-notes-list>
   </div>

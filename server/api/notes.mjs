@@ -1,6 +1,5 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import path from 'path';
 
 const router = express.Router();
 const API_KEY = '/notes';
