@@ -11,6 +11,7 @@ const app = express();
 app
   .use(cors())
   .use(bodyParser.urlencoded({ extended: true }))
+  .use(bodyParser.json())
   .use(express.static('./dist/AMSoftware'))
   .use('/api', api);
 
