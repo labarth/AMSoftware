@@ -1,11 +1,11 @@
 import express from 'express';
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const router = express.Router();
 const API_KEY = '/users';
 
 const usersSchema = new mongoose.Schema({
-  _id: String,
+  _id: mongoose.ObjectId,
   name: String,
   surname: String,
   email: String,
@@ -13,12 +13,15 @@ const usersSchema = new mongoose.Schema({
   confirmPassword: String,
 });
 
-const Users = mongoose.model('users', usersSchema);
+const UsersModel = mongoose.model('users', usersSchema);
 
-router.get(API_KEY, function (req, res) {
-  Users.find((err, users) => {
-    console.log(users, '@@@@@@@@@');
-    res.send(users);
+router.get(`${API_KEY}`, function (req, res) {
+  UsersModel.find().then(users => res.send(users));
+});
+
+router.get(`${API_KEY}/:id`, function (req, res) {
+  UsersModel.findById(req.params.id, function (err, user) {
+    res.send(user);
   });
 });
 
