@@ -25,4 +25,16 @@ router.get(`${API_KEY}/:id`, function (req, res) {
   });
 });
 
+router.post(`/login`, function (req, res) {
+  UsersModel.findOne({ email: req.body.email }, function (err, user) {
+    if (!user) {
+      res.send(JSON.stringify('User not found'));
+    } else if (user && user.password === req.body.password) {
+      res.send(JSON.stringify('Login success'));
+    } else {
+      res.send(JSON.stringify('incorrect password'));
+    }
+  });
+});
+
 export default router;
