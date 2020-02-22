@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from '../services/validation.service';
+import { SignUpService } from '../services/sign-up.service';
 
 @Component({
   selector: 'app-auth',
@@ -10,7 +11,7 @@ import { ValidationService } from '../services/validation.service';
 export class AuthComponent implements OnInit {
   form: FormGroup;
 
-  constructor() { }
+  constructor(private signUpService: SignUpService) { }
 
   ngOnInit() {
     this.form =  new FormGroup({
@@ -27,7 +28,9 @@ export class AuthComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.form);
-    this.form.reset();
+    console.log(this.form.value);
+    this.signUpService.singUp(this.form.value).subscribe((response) => {
+      console.log(response);
+    });
   }
 }

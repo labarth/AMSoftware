@@ -17,4 +17,8 @@ export class AuthService {
   logIn(cred: ICred) {
     return this.http.post(`${API_URL}/login`, cred);
   }
+
+  logInAs(token: string) {
+    return this.http.post(`${API_URL}/login-as`, { token });
+  }
 }
