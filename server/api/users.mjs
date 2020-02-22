@@ -107,7 +107,7 @@ const isAuth = (req, res, next) => {
 };
 
 router.post('/login-as', isAuth, async(req, res) => {
-  if (req.currentUserId) {
+  try {
     const user = await UsersModel.findOne({ _id: req.currentUserId });
 
     if (!user) {
@@ -121,10 +121,9 @@ router.post('/login-as', isAuth, async(req, res) => {
     };
 
     res.status(200).json({ user: userData }).end();
+  } catch {
+    res.json('auth failure').status(500).end();
   }
-
-  res.json('auth failure').status(500).end();
-  return;
 });
 
 export default router;
